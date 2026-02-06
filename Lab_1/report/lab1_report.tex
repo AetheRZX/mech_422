@@ -159,6 +159,19 @@
 
 This report covers the calibration and characterization of an Adafruit MCP9808 temperature sensor connected to an Arduino Nano 33 BLE via the I2C protocol. The sensor was wired with SDA on pin A4 and SCL on pin A5, communicating at its default I2C address of 0x18. The goals were to establish a calibration relationship between the sensor output and actual temperature, and to measure the thermal time constants of the sensor during both heating and cooling.
 
+\section{Materials and Methods}
+
+The circuit and protocol follow the MECH 422 Lab 1 manual.\footnote{MECH 422 Lab 1 Manual, 2026.} The MCP9808 sensor was used because it provides a calibrated digital temperature output with I2C, and the Arduino Nano 33 BLE was required to interface with the sensor and stream data to the PC for logging and analysis. The I2C pull-ups on the board ensure reliable SDA/SCL communication at the sensor's default address.
+
+No deviations from the lab manual procedure were required.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{board_setup.jpg}
+    \caption{Board setup and wiring for the MCP9808 temperature sensor experiment.}
+    \label{fig:board_setup}
+\end{figure}
+
 \section{Calibration Procedures}
 
 The MCP9808 reports temperature through a 12-bit digital value stored in its ambient temperature register (0x05). Each I2C read returns two bytes: a Most Significant Byte (MSB) and a Least Significant Byte (LSB). The lower four bits of the MSB and all eight bits of the LSB together form a 12-bit unsigned integer $N$. This raw register value maps to temperature in degrees Celsius through the sensor's transfer function:

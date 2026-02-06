@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.5)  6 FEB 2026 03:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.5)  6 FEB 2026 03:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1089,17 +1089,35 @@ Package hyperref Info: Link coloring OFF on input line 155.
 \@outlinefile=\write4
 \openout4 = `lab1_report.out'.
 
-<datasheet_dc_characteristics.png, id=64, 603.75563pt x 434.37282pt>
-File: datasheet_dc_characteristics.png Graphic file (type png)
-<use datasheet_dc_characteristics.png>
-Package pdftex.def Info: datasheet_dc_characteristics.png  used on input line 1
-75.
-(pdftex.def)             Requested size: 422.77664pt x 304.16493pt.
+<board_setup.jpg, id=63, 3083.52pt x 4095.3pt>
+File: board_setup.jpg Graphic file (type jpg)
+<use board_setup.jpg>
+Package pdftex.def Info: board_setup.jpg  used on input line 170.
+(pdftex.def)             Requested size: 352.31625pt x 467.91888pt.
  [1
 
 {C:/Users/gyang/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.183 
+       [2 <./board_setup.jpg>]
+<datasheet_dc_characteristics.png, id=88, 603.75563pt x 434.37282pt>
+File: datasheet_dc_characteristics.png Graphic file (type png)
+<use datasheet_dc_characteristics.png>
+Package pdftex.def Info: datasheet_dc_characteristics.png  used on input line 1
+88.
+(pdftex.def)             Requested size: 422.77664pt x 304.16493pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.196 
+       [3 <./datasheet_dc_characteristics.png>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 186.
+nput line 199.
 
 (C:\Users\gyang\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2024/02/08 v1.3d Input encoding file
@@ -1131,82 +1149,74 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.186 ...ation}]{../calibration_data_collection.m}
-                                                   [2 <./datasheet_dc_character
-istics.png>]
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.186 ...ation}]{../calibration_data_collection.m}
-                                                   [3]
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.186 ...ation}]{../calibration_data_collection.m}
+l.199 ...ation}]{../calibration_data_collection.m}
                                                    [4]
-<calibration_curve.png, id=205, 469.755pt x 346.896pt>
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.199 ...ation}]{../calibration_data_collection.m}
+                                                   [5]
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.204 
+       [6]
+<calibration_curve.png, id=246, 469.755pt x 346.896pt>
 File: calibration_curve.png Graphic file (type png)
 <use calibration_curve.png>
-Package pdftex.def Info: calibration_curve.png  used on input line 194.
+Package pdftex.def Info: calibration_curve.png  used on input line 207.
 (pdftex.def)             Requested size: 352.31625pt x 260.17136pt.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.198 
-       [5]
-<full_session.png, id=241, 628.38765pt x 339.30765pt>
+<full_session.png, id=248, 628.38765pt x 339.30765pt>
 File: full_session.png Graphic file (type png)
 <use full_session.png>
-Package pdftex.def Info: full_session.png  used on input line 203.
+Package pdftex.def Info: full_session.png  used on input line 216.
 (pdftex.def)             Requested size: 399.29463pt x 215.6081pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.207 
-       [6 <./calibration_curve.png>]
+l.220 
+       [7 <./calibration_curve.png>]
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.235 \end{equation}
-                     [7 <./full_session.png>]
-<heating_fit.png, id=259, 483.84766pt x 375.44266pt>
+l.248 \end{equation}
+                     [8 <./full_session.png>]
+<heating_fit.png, id=269, 483.84766pt x 375.44266pt>
 File: heating_fit.png Graphic file (type png)
 <use heating_fit.png>
-Package pdftex.def Info: heating_fit.png  used on input line 247.
+Package pdftex.def Info: heating_fit.png  used on input line 260.
 (pdftex.def)             Requested size: 328.82707pt x 255.1544pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.255 
-       [8 <./heating_fit.png>]
-<cooling_fit.png, id=268, 483.84766pt x 375.44266pt>
+l.268 
+       [9 <./heating_fit.png>]
+<cooling_fit.png, id=278, 483.84766pt x 375.44266pt>
 File: cooling_fit.png Graphic file (type png)
 <use cooling_fit.png>
-Package pdftex.def Info: cooling_fit.png  used on input line 258.
+Package pdftex.def Info: cooling_fit.png  used on input line 271.
 (pdftex.def)             Requested size: 328.82707pt x 255.1544pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.274 \end{equation}
-                     [9 <./cooling_fit.png>]
+l.287 \end{equation}
+                     [10 <./cooling_fit.png>]
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.321 
-       [10]
-Overfull \hbox (15.94467pt too wide) in paragraph at lines 322--323
+l.334 
+       [11]
+Overfull \hbox (15.94467pt too wide) in paragraph at lines 335--336
 \OT1/cmr/m/n/12 els. The ef-fec-tive heat trans-fer co-ef-fi-cient de-rived fro
 m the ex-per-i-ment ($\OML/cmm/m/it/12 h \OMS/cmsy/m/n/12 ^^Y \OT1/cmr/m/n/12 6
 0 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 300 []$)
@@ -1221,46 +1231,69 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.323 \end{document}
-                     [11] (lab1_report.aux)
+l.336 \end{document}
+                     [12] (lab1_report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
-Package rerunfilecheck Info: File `lab1_report.out' has not changed.
-(rerunfilecheck)             Checksum: 9169AA0284B86318A451679E7EF84692;1254.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `lab1_report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `lab1_report.out':
+(rerunfilecheck)             Before: 9169AA0284B86318A451679E7EF84692;1254
+(rerunfilecheck)             After:  7C0D4EC4600CDE450B49D14EE1B8BF2F;1408.
  ) 
 Here is how much of TeX's memory you used:
- 49806 strings out of 467871
- 1184662 string characters out of 5418376
- 2399547 words of memory out of 5000000
- 77992 multiletter control sequences out of 15000+600000
- 636562 words of font info for 71 fonts, out of 8000000 for 9000
+ 49824 strings out of 467871
+ 1184978 string characters out of 5418376
+ 2376547 words of memory out of 5000000
+ 78004 multiletter control sequences out of 15000+600000
+ 637016 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,12n,108p,812b,3220s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\gyang\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
-1200.pk> <C:\Users\gyang\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\tctt1000.pk><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmbx10.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gyang/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/gyang/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gyang/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gya
-ng/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/U
-sers/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pf
-b><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr8.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmss12.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmss17.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/gyang/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gyang/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/gyang/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/gyang
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on lab1_report.pdf (11 pages, 707802 bytes).
+ 98i,12n,108p,812b,3194s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{subsection.4.3} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.4.2} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.4.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+ <C:\Users\gyang\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm12
+00.pk> <C:\Users\gyang\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
+tctt1000.pk><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/gyang/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/gyang/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/gyang/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/gyang
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
+rs/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+<C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r7.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmr8.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmss12.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmss17.pfb><C:/Users/gyang/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/gyang/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/gyang/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/gyang/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/
+gyang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on lab1_report.pdf (12 pages, 4264799 bytes).
 PDF statistics:
- 398 PDF objects out of 1000 (max. 8388607)
- 165 named destinations out of 1000 (max. 500000)
- 198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 415 PDF objects out of 1000 (max. 8388607)
+ 171 named destinations out of 1000 (max. 500000)
+ 203 words of extra memory for PDF output out of 10000 (max. 10000000)
 
