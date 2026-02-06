@@ -1,0 +1,323 @@
+﻿\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning, calc, decorations.pathmorphing, shadows}
+\usepackage{circuitikz}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% --- Caption formatting ---
+\captionsetup{
+  font=small,
+  labelfont=bf,
+  labelsep=period,
+  justification=centering,
+  singlelinecheck=false,
+  skip=6pt
+}
+\captionsetup[table]{position=top}
+
+% --- Section headings ---
+\titleformat{\section}{\Large\sffamily\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\sffamily\bfseries}{\thesubsubsection}{0.5em}{}
+\titleformat{\paragraph}[block]{\normalfont\normalsize\bfseries}{}{}{}
+\titlespacing*{\section}{0pt}{1.2ex plus .3ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{1.0ex plus .2ex}{0.4ex}
+\titlespacing*{\paragraph}{0pt}{0.8ex}{0.6ex}
+
+% --- Header / footer ---
+\newcommand{\coursenum}{MECH 422}
+\newcommand{\labnum}{Lab 1}
+\newcommand{\labtitle}{Temperature Sensor}
+\newcommand{\studentone}{Ryan Edric Nashota}
+\newcommand{\studentoneid}{33508219}
+\newcommand{\studenttwo}{}
+\newcommand{\studenttwoid}{}
+\newcommand{\labperformed}{\today}
+\newcommand{\labsubmitted}{\today}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\sffamily \labnum}
+\chead{\sffamily \labtitle}
+\rhead{\sffamily Ryan}
+\renewcommand{\headrulewidth}{0.4pt}
+\cfoot{\sffamily \thepage}
+\setlength{\headheight}{18pt}
+\addtolength{\topmargin}{-6pt}
+
+% --- Cleveref ---
+\Crefname{figure}{Figure}{Figures}
+\Crefname{table}{Table}{Tables}
+\Crefname{equation}{Equation}{Equations}
+\Crefname{section}{Section}{Sections}
+\crefname{figure}{figure}{figures}
+\crefname{table}{table}{tables}
+\crefname{equation}{equation}{equations}
+\crefname{section}{section}{sections}
+
+% --- Graphics path ---
+\graphicspath{{figures/}}
+\newtcolorbox{infobox}[1][]{colback=blue!5,colframe=cyan!60!black,title=#1,boxrule=0.6pt}
+
+% --- Code listing style ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    language=Matlab,
+    inputencoding=utf8/latin1,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    literate={°}{{\textdegree}}1
+}
+\lstset{style=mystyle}
+
+% --- Placeholder command for images ---
+\newcommand{\imageplaceholder}[2]{
+    \begin{figure}[H]
+        \centering
+        \fbox{\begin{minipage}{0.8\textwidth}
+            \centering
+            \vspace{2cm}
+            \textbf{PLACEHOLDER FOR: #1} \\
+            \vspace{1cm}
+            \textit{#2}
+            \vspace{2cm}
+        \end{minipage}}
+        \caption{#1}
+        \label{fig:#1}
+    \end{figure}
+}
+
+% --- Title block ---
+\makeatletter
+\renewcommand{\maketitle}{
+  \vspace*{1ex}
+  \begin{center}
+    {\sffamily
+      {\Large \coursenum\ --- \labnum\par}
+      \vspace{0.6ex}
+      {\huge \bfseries \labtitle\par}
+      \vspace{0.8ex}
+      {\large \studentone\enspace (ID:\ \studentoneid)\\[0.4ex]
+      \ifx\studenttwo\empty\else \studenttwo\enspace (ID:\ \studenttwoid)\par\fi}
+      \vspace{0.6ex}
+      {\normalsize  Report Submitted:\ \labsubmitted\par}
+    }
+  \end{center}
+  \vspace{1.2ex}
+  \thispagestyle{empty}
+}
+\makeatother
+
+% --- Body spacing ---
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+% --- Metadata ---
+\title{\coursenum\ \labnum\\\labtitle}
+\author{\studentone\ (ID:\ \studentoneid)}
+\date{}
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\section{Introduction}
+
+This report covers the calibration and characterization of an Adafruit MCP9808 temperature sensor connected to an Arduino Nano 33 BLE via the I2C protocol. The sensor was wired with SDA on pin A4 and SCL on pin A5, communicating at its default I2C address of 0x18. The goals were to establish a calibration relationship between the sensor output and actual temperature, and to measure the thermal time constants of the sensor during both heating and cooling.
+
+\section{Calibration Procedures}
+
+The MCP9808 reports temperature through a 12-bit digital value stored in its ambient temperature register (0x05). Each I2C read returns two bytes: a Most Significant Byte (MSB) and a Least Significant Byte (LSB). The lower four bits of the MSB and all eight bits of the LSB together form a 12-bit unsigned integer $N$. This raw register value maps to temperature in degrees Celsius through the sensor's transfer function:
+\begin{equation}
+    T\,(^{\circ}\text{C}) = N \times 0.0625
+    \label{eq:cal}
+\end{equation}
+where the factor 0.0625\,$^{\circ}$C per count corresponds to the least significant bit weight of the 12-bit converter. In the MATLAB data collection script, this conversion is implemented through explicit binary weighting of each bit position, with the MSB bits contributing powers of two from $2^4$ through $2^7$ and the LSB bits contributing from $2^3$ down to $2^{-4}$. The raw MSB and LSB bytes were saved alongside each converted reading so that the conversion could be independently verified.
+
+The MCP9808 is factory calibrated, meaning the manufacturer has trimmed the internal sensing circuitry so that Equation~\ref{eq:cal} produces results accurate to $\pm$0.25\,$^{\circ}$C across the operating range. This $\pm$0.25\,$^{\circ}$C specification is the residual error after factory calibration, not a raw sensor tolerance. As a result, no additional user-side calibration is needed beyond decoding the register bits according to the datasheet formula. Figure~\ref{fig:datasheet_specs} summarizes key temperature sensor accuracy and conversion characteristics from the datasheet.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{datasheet_dc_characteristics.png}
+    \caption{MCP9808 temperature sensor DC characteristics and accuracy specifications (datasheet excerpt).}
+    \label{fig:datasheet_specs}
+\end{figure}
+
+To verify the sensor output, the sensor was first allowed to equilibrate with the ambient room environment. Over 32 readings at thermal equilibrium, the sensor output averaged 22.81\,$^{\circ}$C (raw count $N \approx 365$) with a standard deviation of 0.05\,$^{\circ}$C, confirming stable and repeatable measurements. In the second phase of the experiment, a finger was placed on the sensor and held until the readings stabilized at a plateau of approximately 30.23\,$^{\circ}$C ($N \approx 484$). Both values are physically reasonable for room temperature and finger contact temperature, which provides confidence that the register-to-temperature conversion is correct.
+
+No laboratory-grade reference thermometer was available during this experiment, so an independent two-point accuracy check could not be performed. However, the factory specification of $\pm$0.25\,$^{\circ}$C is well within the accuracy needed for the time constant measurements that follow, since the time constant depends on the shape of the temperature transient rather than its absolute value.
+
+The MATLAB script used for data collection is shown below.
+
+\lstinputlisting[caption={MATLAB calibration data collection script}, label={lst:calibration}]{../calibration_data_collection.m}
+
+\section{Temperature Calibration Curve}
+
+Figure~\ref{fig:calibration} shows the calibration relationship for the MCP9808, plotting the raw 12-bit register value $N$ against the corresponding temperature. All 800 data points from the experiment are shown, colored by phase: room temperature equilibrium (blue), heating during finger contact (red), and cooling after finger removal (green). The solid black line represents the theoretical transfer function $T = N \times 0.0625$ from the datasheet. The measured data fall exactly on this line across the entire operating range from $N \approx 365$ (22.8\,$^{\circ}$C) to $N \approx 484$ (30.2\,$^{\circ}$C), confirming that the register-to-temperature conversion is working correctly.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{calibration_curve.png}
+    \caption{MCP9808 calibration curve showing the raw 12-bit register value versus temperature. The black line is the datasheet transfer function ($T = N \times 0.0625$). The two steady-state operating points are marked: room temperature ($N \approx 365$, 22.81\,$^{\circ}$C) and finger contact plateau ($N \approx 484$, 30.23\,$^{\circ}$C).}
+    \label{fig:calibration}
+\end{figure}
+
+Figure~\ref{fig:session} shows the complete measurement session, capturing all three phases of the experiment: the initial room temperature equilibrium, the heating phase when the finger was placed on the sensor, and the cooling phase after the finger was removed. The transitions between phases are clearly visible, and the temperature readings are stable during the equilibrium and plateau regions.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{full_session.png}
+    \caption{Complete temperature measurement session. Blue dots show room temperature equilibrium, red dots show the heating phase during finger contact, and green dots show the cooling response after finger removal.}
+    \label{fig:session}
+\end{figure}
+
+\section{Time Constant Determination}
+
+Both the heating and cooling phases were analyzed separately to extract time constants. This is important because the two processes involve fundamentally different heat transfer mechanisms, and as the results show, the time constants differ by more than an order of magnitude.
+
+\subsection{Heating Time Constant}
+% TODO: Evaluate alternate heating dataset from D:\Repository\mech_422\Lab_1\2_heating.csv (trim to first 40 samples).
+
+During the heating phase, a finger was placed in direct contact with the sensor. The temperature rose from approximately 22.8\,$^{\circ}$C toward a plateau near 30.2\,$^{\circ}$C. This process was modeled as a first-order exponential rise:
+\begin{equation}
+    T(t) = T_{\text{final}} - (T_{\text{final}} - T_{\text{start}}) \cdot e^{-t/\tau_{\text{heat}}}
+    \label{eq:heat}
+\end{equation}
+A nonlinear least-squares fit (using \texttt{scipy.optimize.curve\_fit}) yielded a heating time constant of:
+\begin{equation}
+    \tau_{\text{heat}} = 3.0 \pm 0.1 \text{ seconds}
+\end{equation}
+
+\subsection{Cooling Time Constant}
+
+After the finger was removed, the sensor cooled back toward room temperature following a first-order exponential decay:
+\begin{equation}
+    T(t) = (T_0 - T_{\text{amb}}) \cdot e^{-t/\tau_{\text{cool}}} + T_{\text{amb}}
+    \label{eq:cool}
+\end{equation}
+where $T_0$ is the temperature at the moment the finger was removed (30.3\,$^{\circ}$C) and $T_{\text{amb}}$ is the measured ambient room temperature (22.8\,$^{\circ}$C). The cooling data was recorded for approximately 210 seconds. The fit yielded:
+\begin{equation}
+    \tau_{\text{cool}} = 37.0 \pm 0.3 \text{ seconds}
+\end{equation}
+
+\subsection{Comparison and Discussion}
+
+Figure~\ref{fig:heating} shows the heating fit and its residuals. The residuals show some structure in the first few seconds, which is expected since the initial finger contact is not an instantaneous or perfectly uniform boundary condition. 
+The systematic structure in the heating residuals (Figure 3) indicates that the first-order lumped capacitance model is an oversimplification for the contact heating phase. 
+The measured temperature rises slower than the model predicts initially. This is likely due to dynamic contact resistance, the finger does not establish perfect thermal contact instantly, and the local skin temperature may transiently drop upon contact with the cooler sensor, violating the constant $T_{\infty}$ assumption.
+That is to say, the first order approximation assumes that the system can be approximated as lumped capacitance, however due to how contact resistance changes and the thermal changes, 
+fully approximating this behaviour with a first order system might not be accurate at the start. Though regardless we can still see that the first order model is still a good approximation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.70\textwidth]{heating_fit.png}
+    \caption{Heating time constant fit. Upper panel shows measured data with the exponential rise fit, and the lower panel shows the residuals. The black dot marks the one-time-constant point ($\tau_{\text{heat}} \approx 3.0$ s).}
+    \label{fig:heating}
+\end{figure}
+
+Figure~\ref{fig:cooling} shows the cooling fit and its residuals. The cooling residuals are small and show no strong systematic pattern, confirming that the first-order exponential is a good model for natural convection cooling.
+The first order approximates the behaviour well because first we are letting it cool to the surrounding temperature which is effectively a large reservoir hence the ambient temperature stays constant. Furhtermore the cooling
+simply occurs due to natural convection, hence the first order equation would approximate it well.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.70\textwidth]{cooling_fit.png}
+    \caption{Cooling time constant fit. Upper panel shows measured data with the exponential decay fit, and the lower panel shows the residuals. The black dot marks the one-time-constant point ($\tau_{\text{cool}} \approx 37.0$ s).}
+    \label{fig:cooling}
+\end{figure}
+
+The cooling time constant is roughly 12 times larger than the heating time constant. This large difference is a direct consequence of the different heat transfer mechanisms involved. During heating, the finger makes direct physical contact with the sensor chip. Heat flows through conduction at the skin-to-chip interface, which is a very efficient transfer mechanism. The thermal resistance at the contact is low, so the sensor responds quickly.
+
+During cooling, the finger is removed and the sensor is surrounded only by still air. Heat is now lost through natural convection, which is a much less efficient process. The convective heat transfer coefficient $h$ for natural convection in still air is on the order of 5 to 25 W/(m$^2$K), whereas the effective heat transfer coefficient for direct finger contact is substantially higher due to the conductive pathway.
+
+From Newton's law of cooling, the time constant of a lumped thermal system is:
+\begin{equation}
+    \tau = \frac{mC_p}{hA}
+\end{equation}
+where $m$ is the mass, $C_p$ is the specific heat capacity, and $A$ is the surface area. Since the thermal mass ($mC_p$) and the geometry ($A$) of the sensor do not change between heating and cooling, the ratio of time constants directly reflects the ratio of heat transfer coefficients:
+\begin{equation}
+    \frac{\tau_{\text{cool}}}{\tau_{\text{heat}}} = \frac{h_{\text{heat}}}{h_{\text{cool}}} \approx 12
+\end{equation}
+This tells us that the effective heat transfer coefficient during finger contact is about 12 times higher than during natural convection cooling. The result is physically reasonable and consistent with the expected difference between contact conduction and free convection in air.
+
+
+To check if this value make sense, the effective heat transfer coefficient for a finger would be
+\begin{align}
+    h_{finger} = h_{heat} \approx \cfrac{k}{L}
+\end{align}
+Searching online the 0.3 to 0.37 W/(m.K) and the thickness of the epidermis plus the dermis (the skin's outer layer) is 1 mm to 4 mm.
+Based on this we can get an estimate of the heat transfer coefficient of finger to be
+
+{Maximum Estimate} (Thin skin, high conductivity):
+\begin{equation}
+    h_{\text{max}} = \frac{k_{\text{max}}}{L_{\text{min}}} = \frac{0.37}{0.001} = 370 \, \mathrm{W/(m^2 \cdot K)}
+\end{equation}
+
+{Minimum Estimate} (Thick skin, low conductivity):
+\begin{equation}
+    h_{\text{min}} = \frac{k_{\text{min}}}{L_{\text{max}}} = \frac{0.30}{0.004} = 75 \, \mathrm{W/(m^2 \cdot K)}
+\end{equation}
+
+\textbf{Approximate Skin $h$ Range:} $75 - 370 \, \mathrm{W/(m^2 \cdot K)}$
+
+From (7), and assuming that
+\begin{itemize}
+    \item $h_{\text{air}} \approx 5 - 25 \, \mathrm{W/(m^2 \cdot K)}$
+\end{itemize}
+
+{Low Estimate:}
+\begin{equation}
+    h_{\text{finger}} \approx 12 \times 5 = 60 \, \mathrm{W/(m^2 \cdot K)}
+\end{equation}
+
+{High Estimate:}
+\begin{equation}
+    h_{\text{finger}} \approx 12 \times 25 = 300 \, \mathrm{W/(m^2 \cdot K)}
+\end{equation}
+
+\textbf{Experimental $h$ Range:} $60 - 300 \, \mathrm{W/(m^2 \cdot K)}$
+
+Hence this approximate value and data is validated nicely with our approximate calculation.
+
+\section{Conclusion}
+
+This experiment successfully characterized the steady-state accuracy and dynamic response of the MCP9808 digital temperature sensor. The sensor's output was verified to be linear and consistent with the manufacturer's transfer function, producing stable equilibrium readings at 22.8\,$^{\circ}$C (room temperature) and 30.2\,$^{\circ}$C (finger contact).
+
+The dynamic response analysis revealed a significant disparity between heating and cooling rates. The heating time constant ($\tau_{\text{heat}} \approx 3.0$ s) was found to be approximately 12 times faster than the cooling time constant ($\tau_{\text{cool}} \approx 37.0$ s). This difference confirms that conductive heat transfer at the skin-sensor interface is substantially more efficient than natural convection in still air.
+
+Furthermore, the experimental results were validated against theoretical heat transfer models. The effective heat transfer coefficient derived from the experiment ($h \approx 60 - 300 \, \mathrm{W/(m^2 \cdot K)}$) showed strong agreement with the theoretical conduction range calculated for human skin ($75 - 370 \, \mathrm{W/(m^2 \cdot K)}$). While the first-order lumped capacitance model proved to be an excellent predictor for the cooling phase, the analysis of heating residuals highlighted the influence of variable contact resistance during the initial moments of finger contact. Overall, the results confirm the sensor's suitability for thermal monitoring and validate the physical relationship between sensor response time and the external heat transfer mechanism.
+\end{document}
